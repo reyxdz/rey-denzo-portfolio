@@ -1242,6 +1242,7 @@
             .header {
                 padding: clamp(12px, 2vw, 15px);
                 gap: clamp(10px, 2vw, 15px);
+                grid-template-columns: auto 1fr;
             }
 
             .header-left h1 {
@@ -1249,8 +1250,8 @@
             }
 
             .profile-image {
-                width: clamp(80px, 22vw, 110px);
-                height: clamp(80px, 22vw, 110px);
+                width: clamp(95px, 26vw, 120px);
+                height: clamp(95px, 26vw, 120px);
                 aspect-ratio: 1 / 1;
             }
 
@@ -1431,15 +1432,50 @@
         }
 
         @keyframes powerOutage {
-            0% { opacity: 1; filter: brightness(1) grayscale(0); }
-            5% { opacity: 0; filter: brightness(0); }
-            10% { opacity: 1; filter: brightness(0.5); }
-            15% { opacity: 0; filter: brightness(0); }
-            25% { opacity: 1; filter: brightness(0.8); }
-            30% { opacity: 0; filter: brightness(0); }
-            60% { opacity: 0; filter: brightness(0); }
-            80% { opacity: 0.5; filter: brightness(0.5); }
-            100% { opacity: 1; filter: brightness(1) grayscale(0); }
+            0% {
+                opacity: 1;
+                filter: brightness(1) grayscale(0);
+            }
+
+            5% {
+                opacity: 0;
+                filter: brightness(0);
+            }
+
+            10% {
+                opacity: 1;
+                filter: brightness(0.5);
+            }
+
+            15% {
+                opacity: 0;
+                filter: brightness(0);
+            }
+
+            25% {
+                opacity: 1;
+                filter: brightness(0.8);
+            }
+
+            30% {
+                opacity: 0;
+                filter: brightness(0);
+            }
+
+            60% {
+                opacity: 0;
+                filter: brightness(0);
+            }
+
+            80% {
+                opacity: 0.5;
+                filter: brightness(0.5);
+            }
+
+            100% {
+                opacity: 1;
+                filter: brightness(1) grayscale(0);
+            }
         }
 
         .animate-power-outage {
@@ -1461,10 +1497,8 @@
         <div class="header">
             <div class="profile-image" id="profile-image-container">
                 <img id="profile-img" src="images/light_mode.jpg" alt="Rey Denzo's Profile"
-                    data-light="images/light_mode.jpg"
-                    data-light-hovered="images/light_mode.jpg"
-                    data-dark="images/dark_mode.png"
-                    data-dark-hovered="images/dark_mode.png"
+                    data-light="images/light_mode.jpg" data-light-hovered="images/light_mode.jpg"
+                    data-dark="images/dark_mode.png" data-dark-hovered="images/dark_mode.png"
                     style="width: 100%; height: 100%; object-fit: cover;">
             </div>
 
@@ -1502,7 +1536,7 @@
                     </div>
 
                     <div class="title">
-                        Software Engineer <span class="title-separator">|</span> Data Scientist
+                        Software Engineer <span class="title-separator">|</span> Data Engineer
                     </div>
                 </div>
 
@@ -2229,7 +2263,7 @@
                     const rightColumn = document.querySelector('.right-column');
                     if (rightColumn) rightColumn.style.maxHeight = rightColumn.offsetHeight + 'px';
                 }
-                
+
                 container.classList.add('open');
                 text.innerText = collapseText;
                 icon.style.transform = 'rotate(180deg)';
@@ -2239,10 +2273,10 @@
                 text.innerText = expandText;
                 icon.style.transform = 'rotate(0deg)';
                 if (trigger) trigger.setAttribute('aria-expanded', 'false');
-                
+
                 // Collapsing: Release the right column height freeze after the transition completes
                 if (containerId === 'extra-tech') {
-                    setTimeout(function() {
+                    setTimeout(function () {
                         const rightColumn = document.querySelector('.right-column');
                         if (rightColumn) rightColumn.style.maxHeight = '';
                     }, 400); // matches the 0.4s css transition
