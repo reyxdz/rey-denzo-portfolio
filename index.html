@@ -4,10 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rey Denzo - Portfolio</title>
+    <title>Rey Denzo - Software Engineer Portfolio</title>
+    <meta name="description"
+        content="Rey Denzo — Software Engineer. Explore my portfolio of web applications, mobile apps, and AI/ML projects built with modern technologies.">
+    <meta property="og:title" content="Rey Denzo - Software Engineer Portfolio">
+    <meta property="og:description"
+        content="Explore my portfolio of web applications, mobile apps, and AI/ML projects built with modern technologies.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Rey Denzo - Software Engineer Portfolio">
+    <meta name="twitter:description"
+        content="Explore my portfolio of web applications, mobile apps, and AI/ML projects built with modern technologies.">
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'><path d='M20 3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h7v2H9v2h6v-2h-2v-2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H4V5h16v11z'/></svg>">
-    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         * {
             margin: 0;
@@ -27,14 +36,14 @@
         }
 
         body.dark-mode {
-            --bg-primary: #1a1a1a;
-            --bg-secondary: #2d2d2d;
-            --text-primary: #e0e0e0;
-            --text-secondary: #b0b0b0;
-            --text-tertiary: #808080;
-            --border-color: #404040;
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --text-primary: #f5f5f5;
+            --text-secondary: #a3a3a3;
+            --text-tertiary: #737373;
+            --border-color: #262626;
             --button-bg: #ffffff;
-            --button-text: #000;
+            --button-text: #000000;
         }
 
         html {
@@ -49,6 +58,25 @@
             color: var(--text-primary);
             line-height: 1.6;
             transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Custom Scrollbar Styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-tertiary);
         }
 
         /* Loading Spinner Styles */
@@ -89,9 +117,7 @@
             animation: spin 0.8s linear infinite;
         }
 
-        body.dark-mode .spinner-circle {
-            border-top-color: var(--button-bg);
-        }
+
 
         @keyframes spin {
             0% {
@@ -186,13 +212,17 @@
         /* Small-screen inline icon toggle (hidden by default) */
         .theme-toggle-sm {
             display: none;
+            color: var(--text-primary);
             background: transparent;
             border: none;
-            padding: 4px;
-            margin-left: 0;
+            padding: 0 4px;
+            margin-left: 4px;
             cursor: pointer;
             align-self: flex-start;
             margin-top: 10px;
+            border-radius: 0;
+            box-shadow: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .theme-toggle-sm .toggle-icon-sm svg {
@@ -200,17 +230,6 @@
             height: 15px;
             display: block;
             margin-left: 4rem;
-        }
-
-        /* Small, icon-only style for small screens (no background) */
-        .theme-toggle-sm {
-            color: var(--text-primary);
-            background: transparent;
-            border: none;
-            padding: 0 4px;
-            margin-left: 4px;
-            border-radius: 0;
-            box-shadow: none;
         }
 
         /* Remove focus outline as requested (note: removes keyboard-visible focus ring) */
@@ -270,7 +289,7 @@
             grid-template-columns: 1fr 1fr;
             gap: clamp(6px, 1.5vw, 10px);
             margin-bottom: 0;
-            align-items: center;
+            align-items: stretch;
             grid-column: 2;
             grid-row: 4;
             width: 100%;
@@ -278,7 +297,7 @@
 
         .btn {
             padding: clamp(5px, 1vw, 7px) clamp(10px, 1.8vw, 14px);
-            border: none;
+            border: 1px solid transparent;
             border-radius: 6px;
             cursor: pointer;
             font-size: clamp(10px, 1.8vw, 12px);
@@ -294,7 +313,8 @@
         .btn-primary {
             background-color: var(--button-bg);
             color: var(--button-text);
-            transition: background-color 0.3s ease, color 0.3s ease;
+            border: 1px solid var(--text-tertiary);
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         .btn-primary:hover {
@@ -391,7 +411,7 @@
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: clamp(15px, 3vw, 20px);
-            align-items: start;
+            align-items: stretch;
         }
 
         .left-column {
@@ -403,6 +423,7 @@
         .right-column {
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
         .section {
@@ -554,19 +575,44 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: clamp(12px, 2.5vw, 20px);
         }
 
         .project-card {
             background-color: var(--bg-primary);
             border: 1px solid var(--border-color);
-            padding: clamp(16px, 2.5vw, 24px);
             border-radius: 12px;
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+        }
+
+        .project-image-container {
+            width: 100%;
+            height: clamp(160px, 22vw, 220px);
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: clamp(16px, 2.5vw, 24px);
+            display: flex;
+            flex-direction: column;
             gap: clamp(8px, 1.5vw, 12px);
+            flex: 1;
         }
 
         .project-card:hover {
@@ -603,6 +649,8 @@
             transition: all 0.3s ease;
             display: inline-block;
             word-break: break-all;
+            margin-top: auto;
+            align-self: flex-start;
         }
 
         .project-link:hover {
@@ -843,7 +891,7 @@
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 gap: 8px;
-                align-items: center;
+                align-items: stretch;
                 width: fit-content;
                 justify-self: start;
                 /* left-align actions on small screens only */
@@ -934,7 +982,7 @@
             background-color: var(--bg-primary);
             color: var(--text-primary);
             padding: clamp(6px, 1.2vw, 8px) clamp(10px, 2vw, 14px);
-            border-radius: 20px;
+            border-radius: 6px;
             font-size: clamp(11px, 1.8vw, 13px);
             font-weight: 500;
             border: 1px solid var(--border-color);
@@ -1006,6 +1054,12 @@
         }
 
         .education-degree {
+            color: var(--text-secondary);
+            font-size: clamp(10px, 1.7vw, 12px);
+            margin-bottom: clamp(2px, 0.8vw, 4px);
+        }
+
+        .education-year {
             color: var(--text-secondary);
             font-size: clamp(10px, 1.7vw, 12px);
             margin-bottom: clamp(2px, 0.8vw, 4px);
@@ -1084,7 +1138,11 @@
         }
 
         .section-blank {
-            height: 1478px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             overflow-y: auto;
         }
 
@@ -1093,11 +1151,12 @@
                 grid-template-columns: 1fr;
             }
 
-            .header {
-                flex-direction: column;
+            .right-column {
+                position: static;
             }
 
             .section-blank {
+                position: static;
                 height: 1070px;
                 overflow-y: auto;
             }
@@ -1109,7 +1168,6 @@
             }
 
             .header {
-                flex-direction: column;
                 gap: clamp(15px, 2vw, 20px);
                 padding: clamp(15px, 2.5vw, 20px);
             }
@@ -1162,9 +1220,12 @@
                 padding: clamp(15px, 2.5vw, 20px);
             }
 
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
             .achievement-item::before {
                 left: -31px;
-                /* adjust this value for small screens */
             }
 
             .section-blank {
@@ -1198,28 +1259,31 @@
             }
 
             .actions {
-                padding: 0 12;
+                padding: 0;
                 gap: clamp(4px, 0.8vw, 6px);
                 display: grid;
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
             }
 
             .actions .btn {
-                padding: 4px 8px;
+                padding: 0 10px;
+                height: 30px;
                 font-size: clamp(10px, 1.4vw, 11px);
                 min-width: 10px;
-                width: auto;
+                width: 100%;
+                box-sizing: border-box;
+                margin: 0;
             }
 
             .btn-text {
                 display: none;
             }
 
-            .btn-primary::after {
+            .actions .btn-primary::after {
                 content: 'Email';
             }
 
-            .btn-secondary::after {
+            .actions .btn-secondary::after {
                 content: 'Resume';
             }
 
@@ -1346,9 +1410,40 @@
             object-fit: cover;
         }
 
-        body.dark-mode footer {
-            background-color: var(--bg-secondary);
-            border-top-color: var(--border-color);
+
+
+        .collapse-section {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s ease-in-out;
+            will-change: grid-template-rows;
+        }
+
+        .collapse-section.open {
+            grid-template-rows: 1fr;
+        }
+
+        .collapse-section-inner {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: inherit;
+        }
+
+        @keyframes powerOutage {
+            0% { opacity: 1; filter: brightness(1) grayscale(0); }
+            5% { opacity: 0; filter: brightness(0); }
+            10% { opacity: 1; filter: brightness(0.5); }
+            15% { opacity: 0; filter: brightness(0); }
+            25% { opacity: 1; filter: brightness(0.8); }
+            30% { opacity: 0; filter: brightness(0); }
+            60% { opacity: 0; filter: brightness(0); }
+            80% { opacity: 0.5; filter: brightness(0.5); }
+            100% { opacity: 1; filter: brightness(1) grayscale(0); }
+        }
+
+        .animate-power-outage {
+            animation: powerOutage 1.2s ease-in-out;
         }
     </style>
 </head>
@@ -1365,11 +1460,11 @@
         <!-- Header Section -->
         <div class="header">
             <div class="profile-image" id="profile-image-container">
-                <img id="profile-img" src="images/profilepicture_light.png" alt="Rey Denzo's Profile"
-                    data-light="images/profilepicture_light.png"
-                    data-light-hovered="images/profilepicture_hovered_light.png"
-                    data-dark="images/profilepicture_dark.png"
-                    data-dark-hovered="images/profilepicture_hovered_black.png"
+                <img id="profile-img" src="images/light_mode.jpg" alt="Rey Denzo's Profile"
+                    data-light="images/light_mode.jpg"
+                    data-light-hovered="images/light_mode.jpg"
+                    data-dark="images/dark_mode.png"
+                    data-dark-hovered="images/dark_mode.png"
                     style="width: 100%; height: 100%; object-fit: cover;">
             </div>
 
@@ -1464,10 +1559,12 @@
                         About
                     </div>
                     <div class="about-text">
-                        <p>A dedicated Computer Science student with a track record of success in programming
-                            competitions and freelance digital product development. Skilled in bridging the gap between
-                            technical logic and user design. Eager to apply my experience in building predictive tools
-                            and custom software to a professional internship role.</p>
+                        <p>A passionate and results-driven Software Engineer with a strong foundation in Computer
+                            Science. Experienced in architecting and developing robust web, desktop, and mobile
+                            applications, solving complex
+                            problems, and delivering scalable software solutions. Adept at bridging the gap between
+                            technical logic and user-centric design to create seamless, impactful digital experiences.
+                        </p>
                     </div>
                 </div>
 
@@ -1481,7 +1578,7 @@
                     <div class="education-list">
                         <div class="education-item">
                             <div class="education-school">Biliran Province State University</div>
-                            <div class="education-degree">BS in Computer Science <br>Consistent Dean's Lister</div>
+                            <div class="education-degree">BS in Computer Science – Cum Laude</div>
                             <div class="education-year">2022 - 2026</div>
                         </div>
                     </div>
@@ -1489,10 +1586,25 @@
 
                 <!-- Tech Stack Section -->
                 <div class="section section-tech-stack">
-                    <div class="section-title">
-                        <span class="section-icon"><img src="icons/techStack_icon.png" alt="Education"
-                                style="width: 16px; height: 16px;"></span>
-                        Tech Stack
+                    <div class="section-title"
+                        style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <div style="display: flex; align-items: center; gap: clamp(6px, 1.5vw, 10px);">
+                            <span class="section-icon"><img src="icons/techStack_icon.png" alt="Tech Stack"
+                                    style="width: 16px; height: 16px;"></span>
+                            Tech Stack
+                        </div>
+                        <button type="button" id="view-all-tech"
+                            onclick="toggleCollapse('extra-tech', 'view-all-tech-text', 'view-all-tech-icon', 'View All', 'View Less')"
+                            aria-expanded="false" aria-controls="extra-tech"
+                            style="display: flex; align-items: center; gap: 4px; font-size: clamp(12px, 1.8vw, 13px); font-weight: 500; color: var(--text-tertiary); text-decoration: none; transition: color 0.3s ease; background: none; border: none; cursor: pointer; padding: 0;"
+                            onmouseover="this.style.color='var(--text-primary)'"
+                            onmouseout="this.style.color='var(--text-tertiary)'"><span id="view-all-tech-text">View
+                                All</span><svg id="view-all-tech-icon" class="lucide-icon" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                style="width: 14px; height: 14px; transition: transform 0.4s ease;">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg></button>
                     </div>
 
                     <div class="tech-stack">
@@ -1500,57 +1612,99 @@
                         <div class="tech-category">
                             <div class="tech-category-label">Languages</div>
                             <div class="tech-tags-container">
-                                <span class="tech-tag">Java</span>
-                                <span class="tech-tag">JavaScript</span>
                                 <span class="tech-tag">Dart</span>
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">JavaScript</span>
                                 <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Java</span>
+                                <span class="tech-tag">Ruby</span>
                                 <span class="tech-tag">PHP</span>
                             </div>
                         </div>
 
                         <!-- Frontend Category -->
                         <div class="tech-category">
-                            <div class="tech-category-label">Frameworks & Libraries</div>
+                            <div class="tech-category-label">Frameworks, Libraries & Environments</div>
                             <div class="tech-tags-container">
-                                <span class="tech-tag">Django</span>
                                 <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">Serverpod</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Express.js</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Next.js</span>
+                                <span class="tech-tag">Django</span>
                                 <span class="tech-tag">Bootstrap CSS</span>
                                 <span class="tech-tag">Tailwind CSS</span>
-                                <span class="tech-tag">Vite</span>
-                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Daisy UI</span>
                             </div>
                         </div>
+                        <div id="extra-tech" class="collapse-section">
+                            <div class="collapse-section-inner"
+                                style="display: flex; flex-direction: column; gap: clamp(20px, 4vw, 28px);">
+                                <div class="tech-category">
+                                    <div class="tech-category-label">DevOps & Cloud</div>
+                                    <div class="tech-tags-container">
+                                        <span class="tech-tag">GCP</span>
+                                        <span class="tech-tag">AWS</span>
+                                        <span class="tech-tag">Azure</span>
+                                        <span class="tech-tag">Docker</span>
+                                        <span class="tech-tag">Kubernetes</span>
+                                        <span class="tech-tag">Terraform</span>
+                                        <span class="tech-tag">GitHub Actions</span>
+                                        <span class="tech-tag">GitLab CI</span>
+                                        <span class="tech-tag">Datadog</span>
+                                    </div>
+                                </div>
 
-                        <!-- Backend Category -->
-                        <div class="tech-category">
-                            <div class="tech-category-label">Databases</div>
-                            <div class="tech-tags-container">
-                                <span class="tech-tag">MySQL</span>
-                                <span class="tech-tag">PostgreSQL</span>
-                                <span class="tech-tag">Firebase Firestore</span>
-                            </div>
-                        </div>
 
-                        <!-- AI & Machine Learning Category -->
-                        <div class="tech-category">
-                            <div class="tech-category-label">AI & Machine Learning</div>
-                            <div class="tech-tags-container">
-                                <span class="tech-tag">TensorFlow</span>
-                                <span class="tech-tag">PyTorch</span>
-                            </div>
-                        </div>
 
-                        <!-- Others Category -->
-                        <div class="tech-category">
-                            <div class="tech-category-label">Others</div>
-                            <div class="tech-tags-container">
-                                <span class="tech-tag">GitHub</span>
-                                <span class="tech-tag">Git</span>
-                                <span class="tech-tag">VS Code</span>
-                                <span class="tech-tag">IntelliJ</span>
-                                <span class="tech-tag">Antigravity</span>
+                                <div class="tech-category">
+                                    <div class="tech-category-label">Databases</div>
+                                    <div class="tech-tags-container">
+                                        <span class="tech-tag">MySQL</span>
+                                        <span class="tech-tag">PostgreSQL</span>
+                                        <span class="tech-tag">MongoDB</span>
+                                        <span class="tech-tag">MariaDB</span>
+                                        <span class="tech-tag">DynamoDB</span>
+                                        <span class="tech-tag">SQLite</span>
+                                    </div>
+                                </div>
+
+                                <!-- AI & Machine Learning Category -->
+                                <div class="tech-category">
+                                    <div class="tech-category-label">AI & Machine Learning</div>
+                                    <div class="tech-tags-container">
+                                        <span class="tech-tag">TensorFlow</span>
+                                        <span class="tech-tag">PyTorch</span>
+                                        <span class="tech-tag">Anthropic</span>
+                                        <span class="tech-tag">OpenAI</span>
+                                        <span class="tech-tag">Hugging Face</span>
+                                        <span class="tech-tag">LangChain</span>
+                                        <span class="tech-tag">LlamaIndex</span>
+                                        <span class="tech-tag">Ollama</span>
+                                        <span class="tech-tag">Mistral</span>
+                                    </div>
+                                </div>
+
+                                <!-- Others Category -->
+                                <div class="tech-category">
+                                    <div class="tech-category-label">Tools & Protocols</div>
+                                    <div class="tech-tags-container">
+                                        <span class="tech-tag">Git</span>
+                                        <span class="tech-tag">GitLab</span>
+                                        <span class="tech-tag">GitHub</span>
+                                        <span class="tech-tag">Vite</span>
+                                        <span class="tech-tag">OAuth</span>
+                                        <span class="tech-tag">JWT</span>
+                                        <span class="tech-tag">Antigravity</span>
+                                        <span class="tech-tag">VS Code</span>
+                                        <span class="tech-tag">IntelliJ</span>
+                                        <span class="tech-tag">Discord</span>
+                                        <span class="tech-tag">ClickUp</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </div> <!-- End of extra-tech -->
                     </div>
                 </div>
 
@@ -1566,14 +1720,15 @@
                     <div class="recommendations-carousel">
                         <div class="recommendation-item-carousel active">
                             <div class="recommendations-content">
-                                <p class="recommendations-quote">"Denzo is an excellent student and skilled software
-                                    developer, consistently demonstrating professionalism and commitment in all his
-                                    endeavors. The software projects he created during his academic years meet high
-                                    standards."</p>
+                                <p class="recommendations-quote">"Rey demonstrated outstanding technical proficiency and
+                                    remarkable problem-solving skills during his time with us. His ability to architect
+                                    robust, scalable applications and his dedication to code quality make him an
+                                    invaluable asset to any engineering team. He consistently exceeded our expectations
+                                    and drove projects to success."</p>
                                 <div class="recommendations-divider"></div>
                                 <div class="recommender-info">
-                                    <div class="recommender-name">Joshua Casas</div>
-                                    <div class="recommender-title">Instructor at Biliran Province State University</div>
+                                    <div class="recommender-name">Elmo Nazareno</div>
+                                    <div class="recommender-title">Chief Executive Officer at Rameses Systems Inc.</div>
                                 </div>
                             </div>
                         </div>
@@ -1586,7 +1741,7 @@
                                 <div class="recommendations-divider"></div>
                                 <div class="recommender-info">
                                     <div class="recommender-name">Glenn Gumba</div>
-                                    <div class="recommender-title">Head of Extension Office - BiPSU</div>
+                                    <div class="recommender-title">Head of Extension Office at BiPSU</div>
                                 </div>
                             </div>
                         </div>
@@ -1599,8 +1754,21 @@
                                 <div class="recommendations-divider"></div>
                                 <div class="recommender-info">
                                     <div class="recommender-name">Brian Sinangote</div>
-                                    <div class="recommender-title">Biliran Office of the Provincial Agricultural
-                                        Services - Head</div>
+                                    <div class="recommender-title">Head at Biliran Provincial Agricultural
+                                        Services</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recommendation-item-carousel">
+                            <div class="recommendations-content">
+                                <p class="recommendations-quote">"Denzo is an excellent student and skilled software
+                                    developer, consistently demonstrating professionalism and commitment in all his
+                                    endeavors. The software projects he created during his academic years meet high
+                                    standards."</p>
+                                <div class="recommendations-divider"></div>
+                                <div class="recommender-info">
+                                    <div class="recommender-name">Joshua Casas</div>
+                                    <div class="recommender-title">Instructor at Biliran Province State University</div>
                                 </div>
                             </div>
                         </div>
@@ -1625,7 +1793,7 @@
                                 <div class="recommendations-divider"></div>
                                 <div class="recommender-info">
                                     <div class="recommender-name">Lysa Quiroz</div>
-                                    <div class="recommender-title">Former BiPSU Instructor - Freelancer</div>
+                                    <div class="recommender-title">Freelance Developer</div>
                                 </div>
                             </div>
                         </div>
@@ -1638,7 +1806,7 @@
                                 <div class="recommendations-divider"></div>
                                 <div class="recommender-info">
                                     <div class="recommender-name">Mark Sambitan</div>
-                                    <div class="recommender-title">BS in Secondary Education Student</div>
+                                    <div class="recommender-title">Alumni, BS Secondary Education at BiPSU</div>
                                 </div>
                             </div>
                         </div>
@@ -1651,7 +1819,7 @@
                                 <div class="recommendations-divider"></div>
                                 <div class="recommender-info">
                                     <div class="recommender-name">Marc Paul Espregante</div>
-                                    <div class="recommender-title">BS in Computer Science Student</div>
+                                    <div class="recommender-title">Alumni, BS Computer Science at BiPSU</div>
                                 </div>
                             </div>
                         </div>
@@ -1663,40 +1831,13 @@
                                 <div class="recommendations-divider"></div>
                                 <div class="recommender-info">
                                     <div class="recommender-name">Angela Dacillo</div>
-                                    <div class="recommender-title">BS in Nursing Student</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="recommendation-item-carousel">
-                            <div class="recommendations-content">
-                                <p class="recommendations-quote">"A well-rounded developer with strong communication
-                                    skills. Rey effectively bridges the gap between technical teams and stakeholders.
-                                    His contributions have significantly improved project outcomes and can secure
-                                    project deals efficiently."</p>
-                                <div class="recommendations-divider"></div>
-                                <div class="recommender-info">
-                                    <div class="recommender-name">Mike Javeson Paanod</div>
-                                    <div class="recommender-title">BS in Computer Science Student</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="recommendation-item-carousel">
-                            <div class="recommendations-content">
-                                <p class="recommendations-quote">"Rey is an outstanding professional who brings both
-                                    technical expertise and creative thinking to projects. His ability to deliver
-                                    results consistently makes him a standout developer among us all of his classmates."
-                                </p>
-                                <div class="recommendations-divider"></div>
-                                <div class="recommender-info">
-                                    <div class="recommender-name">Ryan Vic Arcenal</div>
-                                    <div class="recommender-title">BS in Computer Science Student</div>
+                                    <div class="recommender-title">Alumni, BS Nursing at BiPSU</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="recommendations-dots">
                         <div class="recommendation-dot active"></div>
-                        <div class="recommendation-dot"></div>
                         <div class="recommendation-dot"></div>
                         <div class="recommendation-dot"></div>
                         <div class="recommendation-dot"></div>
@@ -1846,46 +1987,166 @@
             </div>
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3 class="project-name">OPAS Mobile Application</h3>
-                    <p class="project-description">Bridging farmers to consumers directly.</p>
-                    <a class="project-link" href="https://opas-biliran.web.app" target="_blank">opas-biliran.web.app</a>
+                    <div class="project-image-container"><img src="images/projects_cover_images/Filipizen.jpg"
+                            alt="Filipizen" class="project-image" loading="lazy"></div>
+                    <div class="project-content">
+                        <h3 class="project-name">Filipizen</h3>
+                        <p class="project-description">A comprehensive digital platform empowering local government unit
+                            transactions.</p>
+                        <span class="project-link" style="cursor: default; opacity: 0.6;">Coming Soon</span>
+                    </div>
                 </div>
                 <div class="project-card">
-                    <h3 class="project-name">GitHub Explorer</h3>
-                    <p class="project-description">Explore GitHub profiles interactively.</p>
-                    <a class="project-link" href="https://github-explorer---api-focused.web.app/"
-                        target="_blank">github-explorer.web.app</a>
+                    <div class="project-image-container"><img src="images/projects_cover_images/OPAS_mobile_app.jpeg"
+                            alt="OPAS Mobile Application" class="project-image" loading="lazy"></div>
+                    <div class="project-content">
+                        <h3 class="project-name">OPAS Mobile Application</h3>
+                        <p class="project-description">Bridging farmers and consumers directly through an intuitive
+                            mobile interface.</p>
+                        <a class="project-link" href="https://opas-biliran.web.app" target="_blank"
+                            rel="noopener noreferrer">opas-biliran.web.app</a>
+                    </div>
                 </div>
                 <div class="project-card">
-                    <h3 class="project-name">DecisionPulse</h3>
-                    <p class="project-description">Course acceptance probability for students.</p>
-                    <a class="project-link" href="https://reyxdz.github.io/DecisionPulse/"
-                        target="_blank">DecisionPulse.github.io</a>
+                    <div class="project-image-container"><img src="images/projects_cover_images/signify.jpg"
+                            alt="Signify" class="project-image" loading="lazy"></div>
+                    <div class="project-content">
+                        <h3 class="project-name">Signify</h3>
+                        <p class="project-description">An advanced digital signing solution streamlining secure document
+                            workflows.</p>
+                        <span class="project-link" style="cursor: default; opacity: 0.6;">Coming Soon</span>
+                    </div>
                 </div>
                 <div class="project-card">
-                    <h3 class="project-name">E-Linangan</h3>
-                    <p class="project-description">Learning website for medieval age.</p>
-                    <a class="project-link" href="https://e-linangan.vercel.app/"
-                        target="_blank">e-linangan.vercel.app</a>
+                    <div class="project-image-container"><img src="images/projects_cover_images/SigniStruct.jpg"
+                            alt="SigniStruct" class="project-image" loading="lazy"></div>
+                    <div class="project-content">
+                        <h3 class="project-name">SigniStruct</h3>
+                        <p class="project-description">A comprehensive application designed for digital structuring and
+                            data management.</p>
+                        <span class="project-link" style="cursor: default; opacity: 0.6;">Coming Soon</span>
+                    </div>
                 </div>
-                <div class="project-card">
-                    <h3 class="project-name">Serebook</h3>
-                    <p class="project-description">Serverless book for different recipes.</p>
-                    <a class="project-link" href="https://serverless-recipe-book.web.app"
-                        target="_blank">serebook.web.app</a>
+            </div>
+
+            <div id="extra-projects" class="collapse-section">
+                <div class="projects-grid" style="overflow: hidden; padding-top: clamp(12px, 2.5vw, 20px);">
+                    <div class="project-card">
+                        <div class="project-image-container"><img src="images/projects_cover_images/e-linangan.jpeg"
+                                alt="E-Linangan" class="project-image" loading="lazy"></div>
+                        <div class="project-content">
+                            <h3 class="project-name">E-Linangan</h3>
+                            <p class="project-description">An educational platform focused on medieval history with
+                                interactive resources.</p>
+                            <a class="project-link" href="https://e-linangan.vercel.app/" target="_blank"
+                                rel="noopener noreferrer">e-linangan.vercel.app</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image-container"><img src="images/projects_cover_images/subtract-ed.jpeg"
+                                alt="Subtract-Ed" class="project-image" loading="lazy"></div>
+                        <div class="project-content">
+                            <h3 class="project-name">Subtract-Ed</h3>
+                            <p class="project-description">An innovative platform utilizing subtractive approaches to
+                                simplify complex topics.</p>
+                            <span class="project-link" style="cursor: default; opacity: 0.6;">Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image-container"><img
+                                src="images/projects_cover_images/project_structura.jpg" alt="Project Structura"
+                                class="project-image" loading="lazy"></div>
+                        <div class="project-content">
+                            <h3 class="project-name">Project Structura</h3>
+                            <p class="project-description">A sophisticated organizational tool built to streamline
+                                structural project management.</p>
+                            <span class="project-link" style="cursor: default; opacity: 0.6;">Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image-container"><img src="images/projects_cover_images/Decision_Pulse.jpeg"
+                                alt="DecisionPulse" class="project-image" loading="lazy"></div>
+                        <div class="project-content">
+                            <h3 class="project-name">DecisionPulse</h3>
+                            <p class="project-description">An analytical tool calculating course acceptance
+                                probabilities using historical data.</p>
+                            <a class="project-link" href="https://reyxdz.github.io/DecisionPulse/" target="_blank"
+                                rel="noopener noreferrer">DecisionPulse.github.io</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-container"><img
+                                src="images/projects_cover_images/GitHub_Explorer.jpeg" alt="GitHub Explorer"
+                                class="project-image" loading="lazy"></div>
+                        <div class="project-content">
+                            <h3 class="project-name">GitHub Explorer</h3>
+                            <p class="project-description">A dynamic application allowing users to search and analyze
+                                GitHub profiles.</p>
+                            <a class="project-link" href="https://github-explorer---api-focused.web.app/"
+                                target="_blank" rel="noopener noreferrer">github-explorer.web.app</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image-container"><img src="images/projects_cover_images/Serebook.jpeg"
+                                alt="Serebook" class="project-image" loading="lazy"></div>
+                        <div class="project-content">
+                            <h3 class="project-name">Serebook</h3>
+                            <p class="project-description">A serverless recipe management application to seamlessly
+                                manage favorite dishes.</p>
+                            <a class="project-link" href="https://serverless-recipe-book.web.app" target="_blank"
+                                rel="noopener noreferrer">serebook.web.app</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image-container"><img src="images/projects_cover_images/RentDito.jpeg"
+                                alt="RentDito" class="project-image" loading="lazy"></div>
+                        <div class="project-content">
+                            <h3 class="project-name">RentDito</h3>
+                            <p class="project-description">A modern property rental platform simplifying the discovery
+                                of premium living spaces.</p>
+                            <span class="project-link" style="cursor: default; opacity: 0.6;">Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image-container"><img src="images/projects_cover_images/BiN.jpeg" alt="BiN"
+                                class="project-image" loading="lazy"></div>
+                        <div class="project-content">
+                            <h3 class="project-name">BiN</h3>
+                            <p class="project-description">A localized housing platform streamlining the search and
+                                booking of boarding houses.</p>
+                            <a class="project-link" href="https://board-in-biliran.web.app" target="_blank"
+                                rel="noopener noreferrer">board-in-biliran.web.app</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image-container"><img src="images/projects_cover_images/ACATIRE.jpeg"
+                                alt="ACATIRE" class="project-image" loading="lazy"></div>
+                        <div class="project-content">
+                            <h3 class="project-name">ACATIRE</h3>
+                            <p class="project-description">An AI-guided recommender system helping students generate
+                                impactful academic titles.</p>
+                            <a class="project-link" href="https://reyxdz.github.io/Academic-Title-Recommender/"
+                                target="_blank" rel="noopener noreferrer">ACATIRE.github.io</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-card">
-                    <h3 class="project-name">ACATIRE</h3>
-                    <p class="project-description">Title recommender for papers.</p>
-                    <a class="project-link" href="https://reyxdz.github.io/Academic-Title-Recommender/"
-                        target="_blank">ACATIRE.github.io</a>
-                </div>
-                <div class="project-card">
-                    <h3 class="project-name">BiN</h3>
-                    <p class="project-description">Boarding house listings in Biliran.</p>
-                    <a class="project-link" href="https://board-in-biliran.web.app"
-                        target="_blank">board-in-biliran.web.app</a>
-                </div>
+            </div>
+
+            <!-- View All Projects Button -->
+            <div style="display: flex; justify-content: center; width: 100%; margin-top: clamp(24px, 4vw, 32px);">
+                <button type="button" id="view-all-projects-btn" class="btn btn-secondary"
+                    onclick="toggleCollapse('extra-projects', 'view-all-projects-text', 'view-all-projects-icon', 'View All Projects', 'View Less Projects')"
+                    aria-expanded="false" aria-controls="extra-projects"
+                    style="display: flex; align-items: center; gap: 8px; justify-content: center; width: 100%; max-width: 300px; cursor: pointer; background-color: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary); transition: all 0.3s ease;">
+                    <span id="view-all-projects-text" style="font-size: clamp(14px, 2vw, 15px); font-weight: 500;">View
+                        All Projects</span>
+                    <svg id="view-all-projects-icon" class="lucide-icon" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="width: 16px; height: 16px; transition: transform 0.4s ease;">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
             </div>
         </div>
 
@@ -1953,6 +2214,42 @@
     </div>
 
     <script>
+        // Shared collapse toggle function for tech stack & projects
+        function toggleCollapse(containerId, textId, iconId, expandText, collapseText) {
+            const container = document.getElementById(containerId);
+            const text = document.getElementById(textId);
+            const icon = document.getElementById(iconId);
+            const trigger = container ? document.querySelector('[aria-controls="' + containerId + '"]') : null;
+            if (!container || !text || !icon) return;
+
+            const isOpen = container.classList.contains('open');
+            if (!isOpen) {
+                // Expanding: Freeze right column height before left column expands
+                if (containerId === 'extra-tech' && window.innerWidth > 1024) {
+                    const rightColumn = document.querySelector('.right-column');
+                    if (rightColumn) rightColumn.style.maxHeight = rightColumn.offsetHeight + 'px';
+                }
+                
+                container.classList.add('open');
+                text.innerText = collapseText;
+                icon.style.transform = 'rotate(180deg)';
+                if (trigger) trigger.setAttribute('aria-expanded', 'true');
+            } else {
+                container.classList.remove('open');
+                text.innerText = expandText;
+                icon.style.transform = 'rotate(0deg)';
+                if (trigger) trigger.setAttribute('aria-expanded', 'false');
+                
+                // Collapsing: Release the right column height freeze after the transition completes
+                if (containerId === 'extra-tech') {
+                    setTimeout(function() {
+                        const rightColumn = document.querySelector('.right-column');
+                        if (rightColumn) rightColumn.style.maxHeight = '';
+                    }, 400); // matches the 0.4s css transition
+                }
+            }
+        }
+
         // Sun icon SVG
         const sunIcon = '<svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
 
@@ -1997,12 +2294,34 @@
         const isLargeScreen = () => window.innerWidth >= 1025;
 
         // Function to update profile image based on theme
-        function updateProfileImage(isDark, showHovered = false) {
+        function updateProfileImage(isDark, showHovered = false, animate = false) {
             if (profileImg) {
-                if (isDark) {
-                    profileImg.src = showHovered ? profileImg.dataset.darkHovered : profileImg.dataset.dark;
+                if (animate) {
+                    // Trigger the blackout animation
+                    profileImg.classList.remove('animate-power-outage');
+                    void profileImg.offsetWidth; // force a reflow to restart animation reliably
+                    profileImg.classList.add('animate-power-outage');
+
+                    // Swap the src precisely horizontally when screen goes fully dark (around ~30%-60% of 1.2s)
+                    setTimeout(() => {
+                        if (isDark) {
+                            profileImg.src = showHovered ? profileImg.dataset.darkHovered : profileImg.dataset.dark;
+                        } else {
+                            profileImg.src = showHovered ? profileImg.dataset.lightHovered : profileImg.dataset.light;
+                        }
+                    }, 400); // 400ms is right in the blackout window!
+
+                    // Clean up animation class
+                    setTimeout(() => {
+                        profileImg.classList.remove('animate-power-outage');
+                    }, 1250);
                 } else {
-                    profileImg.src = showHovered ? profileImg.dataset.lightHovered : profileImg.dataset.light;
+                    // Non-animated fallback (e.g. initial loads and hover events)
+                    if (isDark) {
+                        profileImg.src = showHovered ? profileImg.dataset.darkHovered : profileImg.dataset.dark;
+                    } else {
+                        profileImg.src = showHovered ? profileImg.dataset.lightHovered : profileImg.dataset.light;
+                    }
                 }
             }
         }
@@ -2050,7 +2369,7 @@
         }
 
         // Helper to set icons/classes for both toggles
-        function applyThemeState(isDark) {
+        function applyThemeState(isDark, animate = false) {
             if (themeToggle) {
                 themeToggle.classList.toggle('dark', isDark);
             }
@@ -2063,14 +2382,14 @@
             if (toggleIconSm) {
                 toggleIconSm.innerHTML = isDark ? moonIcon : sunIcon;
             }
-            updateProfileImage(isDark);
+            updateProfileImage(isDark, false, animate);
         }
 
         if (isDarkMode) {
             document.body.classList.add('dark-mode');
-            applyThemeState(true);
+            applyThemeState(true, false);
         } else {
-            applyThemeState(false);
+            applyThemeState(false, false);
         }
 
         // Toggle theme (shared by both toggles)
@@ -2084,9 +2403,9 @@
 
             document.body.classList.toggle('dark-mode');
             const isDark = document.body.classList.contains('dark-mode');
-            applyThemeState(isDark);
+            // Animate only exactly when the user clicks the toggle
+            applyThemeState(isDark, true);
             localStorage.setItem('darkMode', isDark);
-            updateChatModalAvatar();
         }
 
         if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
@@ -2145,8 +2464,20 @@
                 let profileImgLoaded = false;
                 let otherImagesLoaded = false;
 
+                // Also observe for dynamically added images (like gallery images)
+                const observer = new MutationObserver(() => {
+                    checkAllOtherImagesLoaded();
+                });
+
+                observer.observe(document.body, {
+                    childList: true,
+                    subtree: true,
+                    attributes: false
+                });
+
                 function checkIfCanHide() {
                     if (profileImgLoaded && otherImagesLoaded) {
+                        observer.disconnect();
                         hideSpinner();
                     }
                 }
@@ -2169,19 +2500,24 @@
                     profileImgLoaded = true;
                 }
 
-                // Then wait for all other images
+                // Wait for visible, eagerly-loaded images only (skip hidden, collapsed, and lazy-loaded)
                 function checkAllOtherImagesLoaded() {
-                    const allImages = document.querySelectorAll('img:not(#profile-img)');
-                    const imageArray = Array.from(allImages);
+                    const allImages = Array.from(document.querySelectorAll('img:not(#profile-img)'));
+                    const visibleImages = allImages.filter(function (img) {
+                        if (img.loading === 'lazy') return false;
+                        if (img.closest('[style*="display: none"]')) return false;
+                        if (img.closest('.collapse-section:not(.open)')) return false;
+                        return true;
+                    });
 
-                    if (imageArray.length === 0) {
+                    if (visibleImages.length === 0) {
                         otherImagesLoaded = true;
                         checkIfCanHide();
                         return;
                     }
 
                     let loadedCount = 0;
-                    let totalImages = imageArray.length;
+                    let totalImages = visibleImages.length;
 
                     function onImageLoad() {
                         loadedCount++;
@@ -2191,8 +2527,7 @@
                         }
                     }
 
-                    // Track images that are already loaded or errored
-                    imageArray.forEach(img => {
+                    visibleImages.forEach(function (img) {
                         if (img.complete) {
                             loadedCount++;
                         } else {
@@ -2201,7 +2536,6 @@
                         }
                     });
 
-                    // Check if all are already complete
                     if (loadedCount === totalImages) {
                         otherImagesLoaded = true;
                         checkIfCanHide();
@@ -2209,17 +2543,6 @@
                 }
 
                 checkAllOtherImagesLoaded();
-
-                // Also observe for dynamically added images (like gallery images)
-                const observer = new MutationObserver(() => {
-                    checkAllOtherImagesLoaded();
-                });
-
-                observer.observe(document.body, {
-                    childList: true,
-                    subtree: true,
-                    attributes: false
-                });
             }
 
             // Wait for page load, then wait for all images
@@ -2239,18 +2562,18 @@
             const lightboxImage = document.getElementById('lightboxImage');
             const lightboxClose = document.getElementById('lightboxClose');
 
-            // Placeholder gallery images
+            // Gallery images with descriptive alt text
             const galleryImages = [
-                'images/techtrivia.jpg',
-                'images/startup_challenge.jpg',
-                'images/evcos2.jpg',
-                'images/dict.jpg',
-                'images/dl2.jpg',
-                'images/dl1.jpg',
-                'images/evcos1.jpg',
-                'images/codechum.jpg',
-                'images/synodal_link.jpg',
-                'images/ojt.jpg',
+                { src: 'images/techtrivia.jpg', alt: 'Tech Trivia competition event' },
+                { src: 'images/startup_challenge.jpg', alt: 'Philippine Startup Challenge event' },
+                { src: 'images/evcos2.jpg', alt: 'Eastern Visayas Coding Olympics Season 2' },
+                { src: 'images/dict.jpg', alt: 'DICT regional qualifier event' },
+                { src: 'images/dl2.jpg', alt: "Dean's List recognition ceremony" },
+                { src: 'images/dl1.jpg', alt: "Dean's List award" },
+                { src: 'images/evcos1.jpg', alt: 'Eastern Visayas Coding Olympics Season 1' },
+                { src: 'images/codechum.jpg', alt: 'CodeChum National Programming Challenge' },
+                { src: 'images/synodal_link.jpg', alt: 'Synodal Link project event' },
+                { src: 'images/ojt.jpg', alt: 'On-the-Job Training experience' },
             ];
 
             let itemsPerPage = 4;
@@ -2271,14 +2594,15 @@
                 const visibleImages = galleryImages.slice(startIdx, endIdx);
 
                 galleryGrid.innerHTML = '';
-                visibleImages.forEach((src) => {
+                visibleImages.forEach((imgData) => {
                     const item = document.createElement('div');
                     item.className = 'gallery-item';
                     const img = document.createElement('img');
-                    img.src = src;
-                    img.alt = 'Gallery image';
+                    img.src = imgData.src;
+                    img.alt = imgData.alt;
+                    img.loading = 'lazy';
                     item.appendChild(img);
-                    item.addEventListener('click', () => openLightbox(src));
+                    item.addEventListener('click', () => openLightbox(imgData.src));
                     galleryGrid.appendChild(item);
                 });
 
@@ -2468,15 +2792,6 @@
             }
         }
 
-        const knowledgeBase = {
-            "about": "Hey! I'm Rey Denzo, a software developer passionate about building innovative solutions. I love working on web development, mobile apps, and machine learning projects.",
-            "projects": "I've built some cool stuff! OPAS connects farmers directly to consumers, GitHub Explorer lets you explore profiles interactively, DecisionPulse predicts course acceptance rates for students, and ACATIRE recommends titles for academic papers.",
-            "skills": "I'm comfortable with full-stack development, JavaScript, React, Firebase, Python, machine learning, and API development. Always learning new tech!",
-            "contact": "You can reach me through this portfolio or check out the contact info on the site. Feel free to connect!",
-            "experience": "I've done internship work and built several full-stack and data science projects. Hands-on experience with real-world problems.",
-            "education": "I'm a student working on both academic and practical projects to expand my skills.",
-            "portfolio": "This portfolio showcases my projects, achievements, and work gallery. Check out the live projects and descriptions!"
-        };
 
         function findRelevantResponse(query) {
             const lowerQuery = query.toLowerCase().trim();
@@ -2511,12 +2826,12 @@
 
             // Questions about projects
             if (lowerQuery.match(/project|build|create|develop|what have you built|show me|portfolio|built|made/i)) {
-                return "I've worked on several projects! Here are my main ones: OPAS (agricultural marketplace), GitHub Explorer (GitHub profile viewer), DecisionPulse (course acceptance predictor), ACATIRE (academic title recommender), and E-Linangan (medieval history learning platform). Which one would you like to know more about?";
+                return "I've worked on several projects! Here are some highlights: Filipizen (government platform), OPAS (agricultural marketplace), Signify (digital signing), SigniStruct (data management), E-Linangan (medieval history learning), DecisionPulse (course acceptance predictor), GitHub Explorer, Serebook (serverless recipes), ACATIRE (academic title recommender), and more. Which one would you like to know more about?";
             }
 
             // Skills & tech
             if (lowerQuery.match(/skill|know|technology|tech|language|stack|what can you do/i)) {
-                return "I'm skilled in: Languages (Java, JavaScript, Dart, Python, PHP), Frontend (Flutter, Bootstrap, Tailwind), Backend (Django, MySQL, PostgreSQL, Firebase), AI/ML (TensorFlow, PyTorch), and tools like GitHub, Git, VS Code, and IntelliJ!";
+                return "I'm skilled in: Languages (Dart, TypeScript, JavaScript, Python, Java, Ruby, PHP), Frameworks (Flutter, Serverpod, React, Next.js, Express.js, Django), Databases (MySQL, PostgreSQL, MongoDB, Firebase), AI/ML (TensorFlow, PyTorch, LangChain), DevOps (Docker, GCP, AWS), and tools like Git, GitHub, Vite, and more!";
             }
 
             // Contact
@@ -2526,12 +2841,12 @@
 
             // About
             if (lowerQuery.match(/about|tell me|who are you|biography|background|who is|describe yourself/i)) {
-                return "I'm Rey Denzo, a Computer Science student from Biliran Province State University. I'm passionate about programming, web development, and machine learning. I've won programming competitions and love building digital products that solve real problems!";
+                return "I'm Rey Denzo, a passionate and results-driven Software Engineer with a strong foundation in Computer Science. I graduated Cum Laude from Biliran Province State University. I'm experienced in architecting robust web applications and delivering scalable software solutions!";
             }
 
             // Education
             if (lowerQuery.match(/education|school|university|study|learning|degree/i)) {
-                return "I'm studying Bachelor of Science in Computer Science at Biliran Province State University (2022-2026). I'm a consistent Dean's Lister and have been involved in various academic projects and competitions!";
+                return "I graduated with a BS in Computer Science – Cum Laude from Biliran Province State University (2022-2026). I've been actively involved in academic projects and programming competitions throughout my studies!";
             }
 
             // Experience/internship
@@ -2566,16 +2881,18 @@
             }, 2000);
         }
 
-        // Update avatar based on theme
-        function updateChatModalAvatar() {
-            const chatAvatar = document.getElementById('chatModalAvatar');
-            if (chatAvatar) {
-                chatAvatar.src = 'icons/FAVICON.jpg';
+
+        // Shared chat close function
+        function closeChatModal() {
+            if (isModalOpen) {
+                isModalOpen = false;
+                chatModal.classList.remove('chat-modal-open');
+                chatModal.classList.add('chat-modal-close');
+                setTimeout(() => {
+                    chatModal.style.display = 'none';
+                }, 300);
             }
         }
-
-        // Initial avatar update
-        updateChatModalAvatar();
 
         chatButton.addEventListener('click', () => {
             if (!isModalOpen) {
@@ -2587,26 +2904,12 @@
             }
         });
 
-        closeChat.addEventListener('click', () => {
-            if (isModalOpen) {
-                isModalOpen = false;
-                chatModal.classList.remove('chat-modal-open');
-                chatModal.classList.add('chat-modal-close');
-                setTimeout(() => {
-                    chatModal.style.display = 'none';
-                }, 300);
-            }
-        });
+        closeChat.addEventListener('click', closeChatModal);
 
         // Close chat modal when clicking outside
         document.addEventListener('click', (e) => {
             if (isModalOpen && !chatModal.contains(e.target) && !chatButton.contains(e.target)) {
-                isModalOpen = false;
-                chatModal.classList.remove('chat-modal-open');
-                chatModal.classList.add('chat-modal-close');
-                setTimeout(() => {
-                    chatModal.style.display = 'none';
-                }, 300);
+                closeChatModal();
             }
         });
 
